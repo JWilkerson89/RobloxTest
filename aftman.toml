@@ -1,0 +1,6 @@
+# Aftman tool configuration
+# This file specifies the tools and versions for this project
+
+[tools]
+rojo = "rojo-rbx/rojo@7.4.0"
+
