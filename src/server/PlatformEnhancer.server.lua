@@ -89,7 +89,7 @@ if spawn then
 	spawnLight.Parent = spawn
 	
 	-- Add welcome particles
-	local welcome Particles = Instance.new("ParticleEmitter")
+	local welcomeParticles = Instance.new("ParticleEmitter")
 	welcomeParticles.Texture = "rbxasset://textures/particles/sparkles_main.dds"
 	welcomeParticles.Color = ColorSequence.new{
 		ColorSequenceKeypoint.new(0, Color3.fromRGB(255, 200, 255)),
