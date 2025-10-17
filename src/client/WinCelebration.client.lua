@@ -88,7 +88,7 @@ celebrateEvent.OnClientEvent:Connect(function()
 	
 	-- Play win sound
 	local winSound = Instance.new("Sound")
-	winSound.SoundId = "rbxassetid://6518811702"
+	winSound.SoundId = "rbxassetid://5986151291"  -- Victory fanfare
 	winSound.Volume = 0.5
 	winSound.Parent = game:GetService("SoundService")
 	winSound:Play()

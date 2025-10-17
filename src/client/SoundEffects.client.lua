@@ -33,8 +33,8 @@ local stageValue = leaderstats:WaitForChild("Stage")
 local lastStage = stageValue.Value
 stageValue.Changed:Connect(function(newStage)
 	if newStage > lastStage then
-		-- Checkpoint sound
-		playSound("rbxassetid://5153734526", 0.6, 1.1)  -- Success chime
+		-- Checkpoint sound (using free public sound)
+		playSound("rbxassetid://6895079853", 0.5, 1.1)  -- Success chime
 		lastStage = newStage
 	end
 end)
@@ -49,15 +49,15 @@ local function addCharacterSounds(character)
 	-- Jump sound
 	humanoid.StateChanged:Connect(function(oldState, newState)
 		if newState == Enum.HumanoidStateType.Jumping then
-			playSound("rbxassetid://6723495892", 0.3, math.random(95, 105) / 100)
+			playSound("rbxassetid://5618270867", 0.3, math.random(95, 105) / 100)
 		elseif newState == Enum.HumanoidStateType.Landed then
-			playSound("rbxassetid://6723495892", 0.2, 0.8)
+			playSound("rbxassetid://5618270867", 0.2, 0.8)
 		end
 	end)
 	
 	-- Death sound
 	humanoid.Died:Connect(function()
-		playSound("rbxassetid://6294891033", 0.4, 1)
+		playSound("rbxassetid://5943191130", 0.4, 1)
 	end)
 end
 

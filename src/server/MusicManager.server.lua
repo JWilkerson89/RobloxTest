@@ -12,8 +12,8 @@ musicGroup.Parent = SoundService
 -- Create ambient background music
 local bgMusic = Instance.new("Sound")
 bgMusic.Name = "BackgroundMusic"
-bgMusic.SoundId = "rbxassetid://1843463175"  -- Peaceful butterfly garden music
-bgMusic.Volume = 0.25
+bgMusic.SoundId = "rbxassetid://1839246711"  -- Peaceful background music
+bgMusic.Volume = 0.2
 bgMusic.Looped = true
 bgMusic.SoundGroup = musicGroup
 bgMusic.Parent = SoundService

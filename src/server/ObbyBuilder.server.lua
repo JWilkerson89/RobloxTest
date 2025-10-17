@@ -162,8 +162,10 @@ platform15.Parent = platformsFolder
 local platform16 = createPlatform("Platform16", Vector3.new(0, 13, -238), Vector3.new(12, 1, 12), Color3.fromRGB(255, 200, 50))
 platform16.Parent = platformsFolder
 
-local platform17 = createPlatform("Platform17", Vector3.new(0, 13, -249), Vector3.new(12, 1, 12), Color3.fromRGB(255, 200, 50))
-platform17.Parent = platformsFolder
+-- CHECKPOINT 6 - Final checkpoint before win!
+local checkpoint6Platform = createPlatform("Checkpoint6Platform", Vector3.new(0, 13, -249), Vector3.new(16, 1, 16), Color3.fromRGB(255, 215, 0))
+checkpoint6Platform.Parent = platformsFolder
+createCheckpoint("Checkpoint6", 6, Vector3.new(0, 14.5, -249))
 
 -- WIN AREA - Epic golden platform
 local winPlatform = createPlatform("WinPlatform", Vector3.new(0, 13, -263), Vector3.new(20, 2, 20), Color3.fromRGB(255, 215, 0))
