@@ -39,9 +39,9 @@ Players.PlayerAdded:Connect(function(player)
 			hrp.CFrame = playerData[player.UserId].respawnPosition
 		end
 		
-		-- Handle death
+		-- Handle death (quick respawn for better gameplay)
 		humanoid.Died:Connect(function()
-			wait(2)
+			wait(0.5)  -- Very fast respawn!
 			player:LoadCharacter()
 		end)
 	end)

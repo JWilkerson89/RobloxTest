@@ -9,7 +9,7 @@ Config.Version = "0.1.0"
 
 -- Obby Settings
 Config.TotalStages = 6  -- Total number of stages in the obby
-Config.RespawnDelay = 2  -- Seconds before respawn after death
+Config.RespawnDelay = 0.5  -- Seconds before respawn after death (fast!)
 
 -- Player Settings
 Config.WalkSpeed = 16    -- Default player walk speed
