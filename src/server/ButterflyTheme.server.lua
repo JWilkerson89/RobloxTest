@@ -25,94 +25,169 @@ Lighting.Brightness = 2.5
 Lighting.ColorShift_Top = Color3.fromRGB(255, 200, 255)
 Lighting.OutdoorAmbient = Color3.fromRGB(180, 200, 180)
 
--- Helper function to create a butterfly decoration
+-- Helper function to create a butterfly decoration with realistic wings
 local function createButterfly(position, size, color1, color2)
 	local butterfly = Instance.new("Model")
 	butterfly.Name = "Butterfly"
 	
-	-- Left wing (larger and more visible!)
-	local leftWing = Instance.new("Part")
-	leftWing.Name = "LeftWing"
-	leftWing.Size = size or Vector3.new(3, 0.2, 4)
-	leftWing.Position = position + Vector3.new(-1.5, 0, 0)
-	leftWing.Anchored = true
-	leftWing.CanCollide = false
-	leftWing.Color = color1 or Color3.fromRGB(255, 150, 200)
-	leftWing.Material = Enum.Material.Neon
-	leftWing.Transparency = 0.1  -- Less transparent
-	leftWing.Parent = butterfly
+	local baseSize = size or Vector3.new(4, 0.3, 5)
 	
-	-- Add decoration to left wing
-	local leftSpot = Instance.new("Part")
-	leftSpot.Size = Vector3.new(1, 0.3, 1.5)
-	leftSpot.Position = leftWing.Position
-	leftSpot.Anchored = true
-	leftSpot.CanCollide = false
-	leftSpot.Color = color2 or Color3.fromRGB(200, 150, 255)
-	leftSpot.Material = Enum.Material.Neon
-	leftSpot.Transparency = 0.2
-	leftSpot.Shape = Enum.PartType.Ball
-	leftSpot.Parent = butterfly
+	-- LEFT WING - Upper section (larger wedge)
+	local leftWingUpper = Instance.new("WedgePart")
+	leftWingUpper.Name = "LeftWingUpper"
+	leftWingUpper.Size = Vector3.new(baseSize.X * 0.8, 0.2, baseSize.Z * 0.7)
+	leftWingUpper.Position = position + Vector3.new(-baseSize.X * 0.5, 0, baseSize.Z * 0.15)
+	leftWingUpper.Orientation = Vector3.new(0, 90, 0)
+	leftWingUpper.Anchored = true
+	leftWingUpper.CanCollide = false
+	leftWingUpper.Color = color1 or Color3.fromRGB(255, 150, 200)
+	leftWingUpper.Material = Enum.Material.Neon
+	leftWingUpper.Transparency = 0.15
+	leftWingUpper.Parent = butterfly
 	
-	-- Right wing (larger and more visible!)
-	local rightWing = Instance.new("Part")
-	rightWing.Name = "RightWing"
-	rightWing.Size = size or Vector3.new(3, 0.2, 4)
-	rightWing.Position = position + Vector3.new(1.5, 0, 0)
-	rightWing.Anchored = true
-	rightWing.CanCollide = false
-	rightWing.Color = color2 or Color3.fromRGB(200, 150, 255)
-	rightWing.Material = Enum.Material.Neon
-	rightWing.Transparency = 0.1  -- Less transparent
-	rightWing.Parent = butterfly
+	-- LEFT WING - Lower section (smaller wedge)
+	local leftWingLower = Instance.new("WedgePart")
+	leftWingLower.Name = "LeftWingLower"
+	leftWingLower.Size = Vector3.new(baseSize.X * 0.6, 0.2, baseSize.Z * 0.5)
+	leftWingLower.Position = position + Vector3.new(-baseSize.X * 0.35, 0, -baseSize.Z * 0.25)
+	leftWingLower.Orientation = Vector3.new(0, -90, 0)
+	leftWingLower.Anchored = true
+	leftWingLower.CanCollide = false
+	leftWingLower.Color = color1 or Color3.fromRGB(255, 150, 200)
+	leftWingLower.Material = Enum.Material.Neon
+	leftWingLower.Transparency = 0.15
+	leftWingLower.Parent = butterfly
 	
-	-- Add decoration to right wing
-	local rightSpot = Instance.new("Part")
-	rightSpot.Size = Vector3.new(1, 0.3, 1.5)
-	rightSpot.Position = rightWing.Position
-	rightSpot.Anchored = true
-	rightSpot.CanCollide = false
-	rightSpot.Color = color1 or Color3.fromRGB(255, 150, 200)
-	rightSpot.Material = Enum.Material.Neon
-	rightSpot.Transparency = 0.2
-	rightSpot.Shape = Enum.PartType.Ball
-	rightSpot.Parent = butterfly
+	-- LEFT WING - Pattern spots
+	local leftSpot1 = Instance.new("Part")
+	leftSpot1.Size = Vector3.new(1, 0.25, 1.2)
+	leftSpot1.Position = position + Vector3.new(-baseSize.X * 0.45, 0.05, baseSize.Z * 0.25)
+	leftSpot1.Anchored = true
+	leftSpot1.CanCollide = false
+	leftSpot1.Color = color2 or Color3.fromRGB(200, 150, 255)
+	leftSpot1.Material = Enum.Material.Neon
+	leftSpot1.Transparency = 0.2
+	leftSpot1.Shape = Enum.PartType.Ball
+	leftSpot1.Parent = butterfly
 	
-	-- Body (bigger)
+	local leftSpot2 = Instance.new("Part")
+	leftSpot2.Size = Vector3.new(0.6, 0.25, 0.8)
+	leftSpot2.Position = position + Vector3.new(-baseSize.X * 0.3, 0.05, -baseSize.Z * 0.15)
+	leftSpot2.Anchored = true
+	leftSpot2.CanCollide = false
+	leftSpot2.Color = color2 or Color3.fromRGB(200, 150, 255)
+	leftSpot2.Material = Enum.Material.Neon
+	leftSpot2.Transparency = 0.2
+	leftSpot2.Shape = Enum.PartType.Ball
+	leftSpot2.Parent = butterfly
+	
+	-- RIGHT WING - Upper section (larger wedge)
+	local rightWingUpper = Instance.new("WedgePart")
+	rightWingUpper.Name = "RightWingUpper"
+	rightWingUpper.Size = Vector3.new(baseSize.X * 0.8, 0.2, baseSize.Z * 0.7)
+	rightWingUpper.Position = position + Vector3.new(baseSize.X * 0.5, 0, baseSize.Z * 0.15)
+	rightWingUpper.Orientation = Vector3.new(0, -90, 0)
+	rightWingUpper.Anchored = true
+	rightWingUpper.CanCollide = false
+	rightWingUpper.Color = color2 or Color3.fromRGB(200, 150, 255)
+	rightWingUpper.Material = Enum.Material.Neon
+	rightWingUpper.Transparency = 0.15
+	rightWingUpper.Parent = butterfly
+	
+	-- RIGHT WING - Lower section (smaller wedge)
+	local rightWingLower = Instance.new("WedgePart")
+	rightWingLower.Name = "RightWingLower"
+	rightWingLower.Size = Vector3.new(baseSize.X * 0.6, 0.2, baseSize.Z * 0.5)
+	rightWingLower.Position = position + Vector3.new(baseSize.X * 0.35, 0, -baseSize.Z * 0.25)
+	rightWingLower.Orientation = Vector3.new(0, 90, 0)
+	rightWingLower.Anchored = true
+	rightWingLower.CanCollide = false
+	rightWingLower.Color = color2 or Color3.fromRGB(200, 150, 255)
+	rightWingLower.Material = Enum.Material.Neon
+	rightWingLower.Transparency = 0.15
+	rightWingLower.Parent = butterfly
+	
+	-- RIGHT WING - Pattern spots
+	local rightSpot1 = Instance.new("Part")
+	rightSpot1.Size = Vector3.new(1, 0.25, 1.2)
+	rightSpot1.Position = position + Vector3.new(baseSize.X * 0.45, 0.05, baseSize.Z * 0.25)
+	rightSpot1.Anchored = true
+	rightSpot1.CanCollide = false
+	rightSpot1.Color = color1 or Color3.fromRGB(255, 150, 200)
+	rightSpot1.Material = Enum.Material.Neon
+	rightSpot1.Transparency = 0.2
+	rightSpot1.Shape = Enum.PartType.Ball
+	rightSpot1.Parent = butterfly
+	
+	local rightSpot2 = Instance.new("Part")
+	rightSpot2.Size = Vector3.new(0.6, 0.25, 0.8)
+	rightSpot2.Position = position + Vector3.new(baseSize.X * 0.3, 0.05, -baseSize.Z * 0.15)
+	rightSpot2.Anchored = true
+	rightSpot2.CanCollide = false
+	rightSpot2.Color = color1 or Color3.fromRGB(255, 150, 200)
+	rightSpot2.Material = Enum.Material.Neon
+	rightSpot2.Transparency = 0.2
+	rightSpot2.Shape = Enum.PartType.Ball
+	rightSpot2.Parent = butterfly
+	
+	-- BODY - Main body
 	local body = Instance.new("Part")
 	body.Name = "Body"
-	body.Size = Vector3.new(0.5, 0.5, 2.5)
+	body.Size = Vector3.new(0.6, 0.6, 3)
 	body.Position = position
 	body.Anchored = true
 	body.CanCollide = false
-	body.Color = Color3.fromRGB(80, 40, 80)
+	body.Color = Color3.fromRGB(40, 20, 60)
 	body.Material = Enum.Material.Neon
 	body.Shape = Enum.PartType.Cylinder
 	body.Orientation = Vector3.new(0, 0, 90)
 	body.Parent = butterfly
 	
-	-- Add sparkle effect
+	-- HEAD - Small sphere at front
+	local head = Instance.new("Part")
+	head.Name = "Head"
+	head.Size = Vector3.new(0.8, 0.8, 0.8)
+	head.Position = position + Vector3.new(0, 0, 1.7)
+	head.Anchored = true
+	head.CanCollide = false
+	head.Color = Color3.fromRGB(60, 30, 90)
+	head.Material = Enum.Material.Neon
+	head.Shape = Enum.PartType.Ball
+	head.Parent = butterfly
+	
+	-- ANTENNAE - Left
+	local antennaLeft = Instance.new("Part")
+	antennaLeft.Size = Vector3.new(0.1, 0.1, 1.2)
+	antennaLeft.Position = position + Vector3.new(-0.3, 0.4, 2.2)
+	antennaLeft.Orientation = Vector3.new(30, 45, 0)
+	antennaLeft.Anchored = true
+	antennaLeft.CanCollide = false
+	antennaLeft.Color = Color3.fromRGB(80, 40, 120)
+	antennaLeft.Material = Enum.Material.Neon
+	antennaLeft.Parent = butterfly
+	
+	-- ANTENNAE - Right
+	local antennaRight = Instance.new("Part")
+	antennaRight.Size = Vector3.new(0.1, 0.1, 1.2)
+	antennaRight.Position = position + Vector3.new(0.3, 0.4, 2.2)
+	antennaRight.Orientation = Vector3.new(30, -45, 0)
+	antennaRight.Anchored = true
+	antennaRight.CanCollide = false
+	antennaRight.Color = Color3.fromRGB(80, 40, 120)
+	antennaRight.Material = Enum.Material.Neon
+	antennaRight.Parent = butterfly
+	
+	-- Add sparkle effect to body
 	local sparkle = Instance.new("Sparkles")
 	sparkle.SparkleColor = color1 or Color3.fromRGB(255, 150, 200)
 	sparkle.Parent = body
 	
-	-- Add a glowing orb in the center
-	local glow = Instance.new("Part")
-	glow.Size = Vector3.new(0.8, 0.8, 0.8)
-	glow.Position = position
-	glow.Anchored = true
-	glow.CanCollide = false
-	glow.Color = color1
-	glow.Material = Enum.Material.Neon
-	glow.Shape = Enum.PartType.Ball
-	glow.Parent = butterfly
-	
-	-- Add point light to make it glow
+	-- Add glowing point light
 	local light = Instance.new("PointLight")
-	light.Brightness = 3
-	light.Range = 15
-	light.Color = color1
-	light.Parent = glow
+	light.Brightness = 4
+	light.Range = 20
+	light.Color = color1 or Color3.fromRGB(255, 150, 200)
+	light.Parent = body
 	
 	butterfly.Parent = Workspace
 	return butterfly
