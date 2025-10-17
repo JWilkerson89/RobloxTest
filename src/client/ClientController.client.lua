@@ -1,19 +1,26 @@
--- ClientController: Main client-side logic
+-- ClientController: Main client-side obby logic
 local Players = game:GetService("Players")
 local player = Players.LocalPlayer
 
-print("👤 Client loaded for: " .. player.Name)
+print("👤 Obby Client loaded for: " .. player.Name)
 
 -- Wait for character
 player.CharacterAdded:Connect(function(character)
-	print("Character spawned!")
+	print("Character spawned! Good luck on the obby!")
 	
-	-- Example: Make player jump when they spawn
-	wait(1)
 	local humanoid = character:WaitForChild("Humanoid")
-	if humanoid then
-		humanoid.Jump = true
-		print("Welcome jump!")
+	
+	-- Optional: Add some extra jump power for easier obby gameplay
+	-- humanoid.JumpPower = 50 -- Default is 50, increase for easier jumps
+end)
+
+-- Watch for stage changes and give feedback
+local leaderstats = player:WaitForChild("leaderstats")
+local stage = leaderstats:WaitForChild("Stage")
+
+stage.Changed:Connect(function(newStage)
+	if newStage > 1 then
+		print("✅ Checkpoint! You're now on stage " .. newStage)
 	end
 end)
 
