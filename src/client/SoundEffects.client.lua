@@ -49,9 +49,9 @@ local function addCharacterSounds(character)
 	-- Jump sound
 	humanoid.StateChanged:Connect(function(oldState, newState)
 		if newState == Enum.HumanoidStateType.Jumping then
-			playSound("rbxassetid://5618270867", 0.3, math.random(95, 105) / 100)
+			playSound("rbxassetid://6723495892", 0.3, math.random(95, 105) / 100)
 		elseif newState == Enum.HumanoidStateType.Landed then
-			playSound("rbxassetid://5618270867", 0.2, 0.8)
+			playSound("rbxassetid://6723495892", 0.2, 0.8)
 		end
 	end)
 	
