@@ -38,13 +38,46 @@ local function setupCheckpoint(checkpoint)
 					_G.ObbyPlayerData[player.UserId].respawnPosition = checkpoint.CFrame + Vector3.new(0, 5, 0)
 				end
 				
-				-- Visual feedback
+				-- Epic visual feedback
 				local originalColor = checkpoint.Color
-				checkpoint.Color = Color3.fromRGB(0, 255, 0)
-				wait(0.2)
-				checkpoint.Color = originalColor
+				local originalTransparency = checkpoint.Transparency
 				
-				print(player.Name .. " reached stage " .. stageNumber)
+				-- Flash effect
+				for i = 1, 3 do
+					checkpoint.Color = Color3.fromRGB(255, 255, 0)
+					checkpoint.Transparency = 0
+					wait(0.1)
+					checkpoint.Color = Color3.fromRGB(0, 255, 0)
+					wait(0.1)
+				end
+				
+				checkpoint.Color = originalColor
+				checkpoint.Transparency = originalTransparency
+				
+				-- Create celebration particles
+				local particles = Instance.new("ParticleEmitter")
+				particles.Texture = "rbxasset://textures/particles/sparkles_main.dds"
+				particles.Color = ColorSequence.new(Color3.fromRGB(255, 255, 0))
+				particles.Size = NumberSequence.new{
+					NumberSequenceKeypoint.new(0, 2),
+					NumberSequenceKeypoint.new(1, 0)
+				}
+				particles.Transparency = NumberSequence.new{
+					NumberSequenceKeypoint.new(0, 0),
+					NumberSequenceKeypoint.new(1, 1)
+				}
+				particles.Lifetime = NumberRange.new(1, 2)
+				particles.Rate = 100
+				particles.Speed = NumberRange.new(10, 20)
+				particles.SpreadAngle = Vector2.new(180, 180)
+				particles.LightEmission = 1
+				particles.Parent = checkpoint
+				
+				wait(0.5)
+				particles.Enabled = false
+				game:GetService("Debris"):AddItem(particles, 2)
+				
+				print("🎉 " .. player.Name .. " reached stage " .. stageNumber)
 			end
 		end
 	end)
