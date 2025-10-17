@@ -85,86 +85,98 @@ spawnWall2.Material = Enum.Material.Neon
 spawnWall2.Transparency = 0.2
 spawnWall2.Parent = platformsFolder
 
--- STAGE 2 - Easy warm-up jumps
+-- STAGE 2 - Easy warm-up jumps (gaps of ~11 studs)
 print("Building Stage 2...")
 local platform1 = createPlatform("Platform1", Vector3.new(0, 5, -18), Vector3.new(14, 1, 14), Color3.fromRGB(100, 200, 100))
 platform1.Parent = platformsFolder
 
-local platform2 = createPlatform("Platform2", Vector3.new(0, 5, -32), Vector3.new(14, 1, 14), Color3.fromRGB(100, 200, 100))
+local platform2 = createPlatform("Platform2", Vector3.new(0, 5, -29), Vector3.new(14, 1, 14), Color3.fromRGB(100, 200, 100))
 platform2.Parent = platformsFolder
 
-local checkpoint2Platform = createPlatform("Checkpoint2Platform", Vector3.new(0, 5, -48), Vector3.new(16, 1, 16), Color3.fromRGB(120, 220, 120))
-checkpoint2Platform.Parent = platformsFolder
-createCheckpoint("Checkpoint2", 2, Vector3.new(0, 6.5, -48))
+local platform2b = createPlatform("Platform2b", Vector3.new(0, 5, -40), Vector3.new(14, 1, 14), Color3.fromRGB(100, 200, 100))
+platform2b.Parent = platformsFolder
 
--- STAGE 3 - Side-to-side jumps
+local checkpoint2Platform = createPlatform("Checkpoint2Platform", Vector3.new(0, 5, -51), Vector3.new(16, 1, 16), Color3.fromRGB(120, 220, 120))
+checkpoint2Platform.Parent = platformsFolder
+createCheckpoint("Checkpoint2", 2, Vector3.new(0, 6.5, -51))
+
+-- STAGE 3 - Side-to-side jumps (carefully calculated gaps)
 print("Building Stage 3...")
-local platform3 = createPlatform("Platform3", Vector3.new(8, 5, -62), Vector3.new(12, 1, 12), Color3.fromRGB(150, 150, 200))
+local platform3 = createPlatform("Platform3", Vector3.new(7, 5, -62), Vector3.new(12, 1, 12), Color3.fromRGB(150, 150, 200))
 platform3.Parent = platformsFolder
 
-local platform4 = createPlatform("Platform4", Vector3.new(-8, 5, -76), Vector3.new(12, 1, 12), Color3.fromRGB(150, 150, 200))
+local platform4 = createPlatform("Platform4", Vector3.new(-7, 5, -73), Vector3.new(12, 1, 12), Color3.fromRGB(150, 150, 200))
 platform4.Parent = platformsFolder
 
-local platform5 = createPlatform("Platform5", Vector3.new(8, 5, -90), Vector3.new(12, 1, 12), Color3.fromRGB(150, 150, 200))
+local platform5 = createPlatform("Platform5", Vector3.new(7, 5, -84), Vector3.new(12, 1, 12), Color3.fromRGB(150, 150, 200))
 platform5.Parent = platformsFolder
 
-local checkpoint3Platform = createPlatform("Checkpoint3Platform", Vector3.new(0, 5, -105), Vector3.new(16, 1, 16), Color3.fromRGB(170, 170, 220))
-checkpoint3Platform.Parent = platformsFolder
-createCheckpoint("Checkpoint3", 3, Vector3.new(0, 6.5, -105))
-
--- STAGE 4 - Height variation
-print("Building Stage 4...")
-local platform6 = createPlatform("Platform6", Vector3.new(0, 7, -130), Vector3.new(10, 1, 10), Color3.fromRGB(200, 150, 100))
+local platform6 = createPlatform("Platform6", Vector3.new(0, 5, -95), Vector3.new(12, 1, 12), Color3.fromRGB(150, 150, 200))
 platform6.Parent = platformsFolder
 
-local platform7 = createPlatform("Platform7", Vector3.new(0, 10, -145), Vector3.new(10, 1, 10), Color3.fromRGB(200, 150, 100))
+local checkpoint3Platform = createPlatform("Checkpoint3Platform", Vector3.new(0, 5, -106), Vector3.new(16, 1, 16), Color3.fromRGB(170, 170, 220))
+checkpoint3Platform.Parent = platformsFolder
+createCheckpoint("Checkpoint3", 3, Vector3.new(0, 6.5, -106))
+
+-- STAGE 4 - Height variation (climbing up gradually)
+print("Building Stage 4...")
+local platform7 = createPlatform("Platform7", Vector3.new(0, 7, -117), Vector3.new(12, 1, 12), Color3.fromRGB(200, 150, 100))
 platform7.Parent = platformsFolder
 
-local platform8 = createPlatform("Platform8", Vector3.new(0, 13, -160), Vector3.new(10, 1, 10), Color3.fromRGB(200, 150, 100))
+local platform8 = createPlatform("Platform8", Vector3.new(0, 9, -128), Vector3.new(12, 1, 12), Color3.fromRGB(200, 150, 100))
 platform8.Parent = platformsFolder
 
-local checkpoint4Platform = createPlatform("Checkpoint4Platform", Vector3.new(0, 13, -175), Vector3.new(15, 1, 15), Color3.fromRGB(220, 170, 120))
-checkpoint4Platform.Parent = platformsFolder
-createCheckpoint("Checkpoint4", 4, Vector3.new(0, 14.5, -175))
-
--- STAGE 5 - Tricky small platforms
-print("Building Stage 5...")
-local platform9 = createPlatform("Platform9", Vector3.new(-8, 13, -190), Vector3.new(8, 1, 8), Color3.fromRGB(180, 100, 180))
+local platform9 = createPlatform("Platform9", Vector3.new(0, 11, -139), Vector3.new(12, 1, 12), Color3.fromRGB(200, 150, 100))
 platform9.Parent = platformsFolder
 
-local platform10 = createPlatform("Platform10", Vector3.new(8, 13, -205), Vector3.new(8, 1, 8), Color3.fromRGB(180, 100, 180))
+local platform10 = createPlatform("Platform10", Vector3.new(0, 13, -150), Vector3.new(12, 1, 12), Color3.fromRGB(200, 150, 100))
 platform10.Parent = platformsFolder
 
-local platform11 = createPlatform("Platform11", Vector3.new(-8, 13, -220), Vector3.new(8, 1, 8), Color3.fromRGB(180, 100, 180))
+local checkpoint4Platform = createPlatform("Checkpoint4Platform", Vector3.new(0, 13, -161), Vector3.new(16, 1, 16), Color3.fromRGB(220, 170, 120))
+checkpoint4Platform.Parent = platformsFolder
+createCheckpoint("Checkpoint4", 4, Vector3.new(0, 14.5, -161))
+
+-- STAGE 5 - Tricky smaller platforms (but still possible!)
+print("Building Stage 5...")
+local platform11 = createPlatform("Platform11", Vector3.new(-6, 13, -172), Vector3.new(10, 1, 10), Color3.fromRGB(180, 100, 180))
 platform11.Parent = platformsFolder
 
-local platform12 = createPlatform("Platform12", Vector3.new(0, 13, -235), Vector3.new(8, 1, 8), Color3.fromRGB(180, 100, 180))
+local platform12 = createPlatform("Platform12", Vector3.new(6, 13, -183), Vector3.new(10, 1, 10), Color3.fromRGB(180, 100, 180))
 platform12.Parent = platformsFolder
 
-local checkpoint5Platform = createPlatform("Checkpoint5Platform", Vector3.new(0, 13, -250), Vector3.new(15, 1, 15), Color3.fromRGB(200, 120, 200))
+local platform13a = createPlatform("Platform13a", Vector3.new(-6, 13, -194), Vector3.new(10, 1, 10), Color3.fromRGB(180, 100, 180))
+platform13a.Parent = platformsFolder
+
+local platform14a = createPlatform("Platform14a", Vector3.new(0, 13, -205), Vector3.new(10, 1, 10), Color3.fromRGB(180, 100, 180))
+platform14a.Parent = platformsFolder
+
+local checkpoint5Platform = createPlatform("Checkpoint5Platform", Vector3.new(0, 13, -216), Vector3.new(16, 1, 16), Color3.fromRGB(200, 120, 200))
 checkpoint5Platform.Parent = platformsFolder
-createCheckpoint("Checkpoint5", 5, Vector3.new(0, 14.5, -250))
+createCheckpoint("Checkpoint5", 5, Vector3.new(0, 14.5, -216))
 
--- STAGE 6 - Final approach to win
+-- STAGE 6 - Final approach to win (victory lap!)
 print("Building Stage 6...")
-local platform13 = createPlatform("Platform13", Vector3.new(0, 13, -270), Vector3.new(12, 1, 12), Color3.fromRGB(255, 200, 50))
-platform13.Parent = platformsFolder
+local platform15 = createPlatform("Platform15", Vector3.new(0, 13, -227), Vector3.new(12, 1, 12), Color3.fromRGB(255, 200, 50))
+platform15.Parent = platformsFolder
 
-local platform14 = createPlatform("Platform14", Vector3.new(0, 13, -290), Vector3.new(12, 1, 12), Color3.fromRGB(255, 200, 50))
-platform14.Parent = platformsFolder
+local platform16 = createPlatform("Platform16", Vector3.new(0, 13, -238), Vector3.new(12, 1, 12), Color3.fromRGB(255, 200, 50))
+platform16.Parent = platformsFolder
+
+local platform17 = createPlatform("Platform17", Vector3.new(0, 13, -249), Vector3.new(12, 1, 12), Color3.fromRGB(255, 200, 50))
+platform17.Parent = platformsFolder
 
 -- WIN AREA - Epic golden platform
-local winPlatform = createPlatform("WinPlatform", Vector3.new(0, 13, -310), Vector3.new(20, 2, 20), Color3.fromRGB(255, 215, 0))
+local winPlatform = createPlatform("WinPlatform", Vector3.new(0, 13, -263), Vector3.new(20, 2, 20), Color3.fromRGB(255, 215, 0))
 winPlatform.Material = Enum.Material.Neon
 winPlatform.Parent = platformsFolder
 
 -- Add win walls for effect
-local winWall1 = createPlatform("WinWall1", Vector3.new(12, 20, -310), Vector3.new(2, 15, 20), Color3.fromRGB(255, 215, 0))
+local winWall1 = createPlatform("WinWall1", Vector3.new(12, 20, -263), Vector3.new(2, 15, 20), Color3.fromRGB(255, 215, 0))
 winWall1.Material = Enum.Material.Neon
 winWall1.Transparency = 0.3
 winWall1.Parent = platformsFolder
 
-local winWall2 = createPlatform("WinWall2", Vector3.new(-12, 20, -310), Vector3.new(2, 15, 20), Color3.fromRGB(255, 215, 0))
+local winWall2 = createPlatform("WinWall2", Vector3.new(-12, 20, -263), Vector3.new(2, 15, 20), Color3.fromRGB(255, 215, 0))
 winWall2.Material = Enum.Material.Neon
 winWall2.Transparency = 0.3
 winWall2.Parent = platformsFolder
@@ -173,7 +185,7 @@ winWall2.Parent = platformsFolder
 local winPart = Instance.new("Part")
 winPart.Name = "WinPart"
 winPart.Size = Vector3.new(18, 10, 18)
-winPart.Position = Vector3.new(0, 19, -310)
+winPart.Position = Vector3.new(0, 19, -263)
 winPart.Anchored = true
 winPart.CanCollide = false
 winPart.Color = Color3.fromRGB(255, 215, 0)
@@ -187,8 +199,8 @@ winPart.Parent = Workspace
 print("Creating kill brick...")
 local killBrick = Instance.new("Part")
 killBrick.Name = "KillBrick"
-killBrick.Size = Vector3.new(300, 1, 400)
-killBrick.Position = Vector3.new(0, -30, -155)
+killBrick.Size = Vector3.new(300, 1, 350)
+killBrick.Position = Vector3.new(0, -30, -130)
 killBrick.Anchored = true
 killBrick.Parent = killBricksFolder
 
