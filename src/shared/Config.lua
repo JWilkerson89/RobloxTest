@@ -8,7 +8,7 @@ Config.GameName = "Simple Obby"
 Config.Version = "0.1.0"
 
 -- Obby Settings
-Config.TotalStages = 10  -- Update this as you add more stages
+Config.TotalStages = 6  -- Total number of stages in the obby
 Config.RespawnDelay = 2  -- Seconds before respawn after death
 
 -- Player Settings
