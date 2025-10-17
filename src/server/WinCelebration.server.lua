@@ -50,53 +50,74 @@ winPart.Touched:Connect(function(hit)
 	local player = Players:GetPlayerFromCharacter(character)
 	
 	if player and not winners[player.UserId] then
-		winners[player.UserId] = true
+		-- Check if player has reached stage 6 (completed all checkpoints)
+		local leaderstats = player:FindFirstChild("leaderstats")
+		if not leaderstats then return end
 		
-		print("🎉🎉🎉 " .. player.Name .. " COMPLETED THE OBBY! 🎉🎉🎉")
+		local stageValue = leaderstats:FindFirstChild("Stage")
+		if not stageValue then return end
 		
-		-- Server-side celebration
-		local humanoid = character:FindFirstChild("Humanoid")
-		if humanoid then
-			-- Make them jump for joy!
-			humanoid.Jump = true
+		-- Only celebrate if they've completed all stages
+		if stageValue.Value >= 6 then
+			winners[player.UserId] = true
 			
-			-- Add fireworks particles to player
-			local fireworks = Instance.new("ParticleEmitter")
-			fireworks.Name = "Fireworks"
-			fireworks.Texture = "rbxasset://textures/particles/sparkles_main.dds"
-			fireworks.Color = ColorSequence.new{
-				ColorSequenceKeypoint.new(0, Color3.fromRGB(255, 255, 0)),
-				ColorSequenceKeypoint.new(0.5, Color3.fromRGB(255, 100, 255)),
-				ColorSequenceKeypoint.new(1, Color3.fromRGB(100, 255, 255))
-			}
-			fireworks.Size = NumberSequence.new{
-				NumberSequenceKeypoint.new(0, 2),
-				NumberSequenceKeypoint.new(1, 0)
-			}
-			fireworks.Transparency = NumberSequence.new{
-				NumberSequenceKeypoint.new(0, 0),
-				NumberSequenceKeypoint.new(1, 1)
-			}
-			fireworks.Lifetime = NumberRange.new(1, 2)
-			fireworks.Rate = 50
-			fireworks.Speed = NumberRange.new(15, 25)
-			fireworks.SpreadAngle = Vector2.new(180, 180)
-			fireworks.LightEmission = 1
-			fireworks.Parent = character:FindFirstChild("HumanoidRootPart")
+			print("🎉🎉🎉 " .. player.Name .. " COMPLETED THE OBBY! 🎉🎉🎉")
 			
-			wait(5)
-			fireworks:Destroy()
+			-- Server-side celebration
+			local humanoid = character:FindFirstChild("Humanoid")
+			local humanoidRootPart = character:FindFirstChild("HumanoidRootPart")
+			
+			if humanoid then
+				-- Make them jump for joy!
+				humanoid.Jump = true
+			end
+			
+			if humanoidRootPart then
+				-- Add fireworks particles to player
+				local fireworks = Instance.new("ParticleEmitter")
+				fireworks.Name = "Fireworks"
+				fireworks.Texture = "rbxasset://textures/particles/sparkles_main.dds"
+				fireworks.Color = ColorSequence.new{
+					ColorSequenceKeypoint.new(0, Color3.fromRGB(255, 255, 0)),
+					ColorSequenceKeypoint.new(0.5, Color3.fromRGB(255, 100, 255)),
+					ColorSequenceKeypoint.new(1, Color3.fromRGB(100, 255, 255))
+				}
+				fireworks.Size = NumberSequence.new{
+					NumberSequenceKeypoint.new(0, 2),
+					NumberSequenceKeypoint.new(1, 0)
+				}
+				fireworks.Transparency = NumberSequence.new{
+					NumberSequenceKeypoint.new(0, 0),
+					NumberSequenceKeypoint.new(1, 1)
+				}
+				fireworks.Lifetime = NumberRange.new(1, 2)
+				fireworks.Rate = 50
+				fireworks.Speed = NumberRange.new(15, 25)
+				fireworks.SpreadAngle = Vector2.new(180, 180)
+				fireworks.LightEmission = 1
+				fireworks.Parent = humanoidRootPart
+				
+				spawn(function()
+					wait(5)
+					if fireworks and fireworks.Parent then
+						fireworks:Destroy()
+					end
+				end)
+			end
+			
+			-- Create remote event to trigger client-side celebration
+			local celebrateEvent = ReplicatedStorage:FindFirstChild("CelebrateWin")
+			if not celebrateEvent then
+				celebrateEvent = Instance.new("RemoteEvent")
+				celebrateEvent.Name = "CelebrateWin"
+				celebrateEvent.Parent = ReplicatedStorage
+			end
+			
+			celebrateEvent:FireClient(player)
+		else
+			-- Give them a hint that they need to complete all checkpoints first
+			print(player.Name .. " reached win area but still on stage " .. stageValue.Value .. " (needs stage 6)")
 		end
-		
-		-- Create remote event to trigger client-side celebration
-		local celebrateEvent = ReplicatedStorage:FindFirstChild("CelebrateWin")
-		if not celebrateEvent then
-			celebrateEvent = Instance.new("RemoteEvent")
-			celebrateEvent.Name = "CelebrateWin"
-			celebrateEvent.Parent = ReplicatedStorage
-		end
-		
-		celebrateEvent:FireClient(player)
 	end
 end)
 
