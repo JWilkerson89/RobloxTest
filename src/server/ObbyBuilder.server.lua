@@ -23,8 +23,8 @@ local function createPlatform(name, position, size, color)
 	platform.Size = size or Vector3.new(10, 1, 10)
 	platform.Position = position
 	platform.Anchored = true
-	platform.Color = color or Color3.fromRGB(128, 128, 128)
-	platform.Material = Enum.Material.Concrete
+	platform.Color = color or Color3.fromRGB(180, 220, 180)
+	platform.Material = Enum.Material.Grass  -- Nature theme!
 	platform.TopSurface = Enum.SurfaceType.Smooth
 	platform.BottomSurface = Enum.SurfaceType.Smooth
 	return platform
@@ -71,15 +71,18 @@ spawn.Anchored = true
 spawn.TopSurface = Enum.SurfaceType.Smooth
 spawn.BottomSurface = Enum.SurfaceType.Smooth
 spawn.BrickColor = BrickColor.new("Lime green")
+spawn.Material = Enum.Material.Grass
 spawn.Parent = Workspace
 
--- Add decorative spawn walls
-local spawnWall1 = createPlatform("SpawnWall1", Vector3.new(11, 8, 0), Vector3.new(2, 15, 20), Color3.fromRGB(70, 130, 180))
+-- Add decorative spawn walls (butterfly wings themed!)
+local spawnWall1 = createPlatform("SpawnWall1", Vector3.new(11, 8, 0), Vector3.new(2, 15, 20), Color3.fromRGB(255, 150, 200))
 spawnWall1.Material = Enum.Material.Neon
+spawnWall1.Transparency = 0.2
 spawnWall1.Parent = platformsFolder
 
-local spawnWall2 = createPlatform("SpawnWall2", Vector3.new(-11, 8, 0), Vector3.new(2, 15, 20), Color3.fromRGB(70, 130, 180))
+local spawnWall2 = createPlatform("SpawnWall2", Vector3.new(-11, 8, 0), Vector3.new(2, 15, 20), Color3.fromRGB(200, 150, 255))
 spawnWall2.Material = Enum.Material.Neon
+spawnWall2.Transparency = 0.2
 spawnWall2.Parent = platformsFolder
 
 -- STAGE 2 - Easy warm-up jumps
