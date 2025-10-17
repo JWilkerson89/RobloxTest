@@ -87,30 +87,30 @@ spawnWall2.Parent = platformsFolder
 
 -- STAGE 2 - Easy warm-up jumps
 print("Building Stage 2...")
-local platform1 = createPlatform("Platform1", Vector3.new(0, 5, -25), Vector3.new(12, 1, 12), Color3.fromRGB(100, 200, 100))
+local platform1 = createPlatform("Platform1", Vector3.new(0, 5, -18), Vector3.new(14, 1, 14), Color3.fromRGB(100, 200, 100))
 platform1.Parent = platformsFolder
 
-local platform2 = createPlatform("Platform2", Vector3.new(0, 5, -40), Vector3.new(12, 1, 12), Color3.fromRGB(100, 200, 100))
+local platform2 = createPlatform("Platform2", Vector3.new(0, 5, -32), Vector3.new(14, 1, 14), Color3.fromRGB(100, 200, 100))
 platform2.Parent = platformsFolder
 
-local checkpoint2Platform = createPlatform("Checkpoint2Platform", Vector3.new(0, 5, -55), Vector3.new(15, 1, 15), Color3.fromRGB(120, 220, 120))
+local checkpoint2Platform = createPlatform("Checkpoint2Platform", Vector3.new(0, 5, -48), Vector3.new(16, 1, 16), Color3.fromRGB(120, 220, 120))
 checkpoint2Platform.Parent = platformsFolder
-createCheckpoint("Checkpoint2", 2, Vector3.new(0, 6.5, -55))
+createCheckpoint("Checkpoint2", 2, Vector3.new(0, 6.5, -48))
 
 -- STAGE 3 - Side-to-side jumps
 print("Building Stage 3...")
-local platform3 = createPlatform("Platform3", Vector3.new(10, 5, -70), Vector3.new(10, 1, 10), Color3.fromRGB(150, 150, 200))
+local platform3 = createPlatform("Platform3", Vector3.new(8, 5, -62), Vector3.new(12, 1, 12), Color3.fromRGB(150, 150, 200))
 platform3.Parent = platformsFolder
 
-local platform4 = createPlatform("Platform4", Vector3.new(-10, 5, -85), Vector3.new(10, 1, 10), Color3.fromRGB(150, 150, 200))
+local platform4 = createPlatform("Platform4", Vector3.new(-8, 5, -76), Vector3.new(12, 1, 12), Color3.fromRGB(150, 150, 200))
 platform4.Parent = platformsFolder
 
-local platform5 = createPlatform("Platform5", Vector3.new(10, 5, -100), Vector3.new(10, 1, 10), Color3.fromRGB(150, 150, 200))
+local platform5 = createPlatform("Platform5", Vector3.new(8, 5, -90), Vector3.new(12, 1, 12), Color3.fromRGB(150, 150, 200))
 platform5.Parent = platformsFolder
 
-local checkpoint3Platform = createPlatform("Checkpoint3Platform", Vector3.new(0, 5, -115), Vector3.new(15, 1, 15), Color3.fromRGB(170, 170, 220))
+local checkpoint3Platform = createPlatform("Checkpoint3Platform", Vector3.new(0, 5, -105), Vector3.new(16, 1, 16), Color3.fromRGB(170, 170, 220))
 checkpoint3Platform.Parent = platformsFolder
-createCheckpoint("Checkpoint3", 3, Vector3.new(0, 6.5, -115))
+createCheckpoint("Checkpoint3", 3, Vector3.new(0, 6.5, -105))
 
 -- STAGE 4 - Height variation
 print("Building Stage 4...")

@@ -30,38 +30,62 @@ local function createButterfly(position, size, color1, color2)
 	local butterfly = Instance.new("Model")
 	butterfly.Name = "Butterfly"
 	
-	-- Left wing
+	-- Left wing (larger and more visible!)
 	local leftWing = Instance.new("Part")
 	leftWing.Name = "LeftWing"
-	leftWing.Size = size or Vector3.new(2, 0.1, 3)
-	leftWing.Position = position + Vector3.new(-1, 0, 0)
+	leftWing.Size = size or Vector3.new(3, 0.2, 4)
+	leftWing.Position = position + Vector3.new(-1.5, 0, 0)
 	leftWing.Anchored = true
 	leftWing.CanCollide = false
 	leftWing.Color = color1 or Color3.fromRGB(255, 150, 200)
 	leftWing.Material = Enum.Material.Neon
-	leftWing.Transparency = 0.3
+	leftWing.Transparency = 0.1  -- Less transparent
 	leftWing.Parent = butterfly
 	
-	-- Right wing
+	-- Add decoration to left wing
+	local leftSpot = Instance.new("Part")
+	leftSpot.Size = Vector3.new(1, 0.3, 1.5)
+	leftSpot.Position = leftWing.Position
+	leftSpot.Anchored = true
+	leftSpot.CanCollide = false
+	leftSpot.Color = color2 or Color3.fromRGB(200, 150, 255)
+	leftSpot.Material = Enum.Material.Neon
+	leftSpot.Transparency = 0.2
+	leftSpot.Shape = Enum.PartType.Ball
+	leftSpot.Parent = butterfly
+	
+	-- Right wing (larger and more visible!)
 	local rightWing = Instance.new("Part")
 	rightWing.Name = "RightWing"
-	rightWing.Size = size or Vector3.new(2, 0.1, 3)
-	rightWing.Position = position + Vector3.new(1, 0, 0)
+	rightWing.Size = size or Vector3.new(3, 0.2, 4)
+	rightWing.Position = position + Vector3.new(1.5, 0, 0)
 	rightWing.Anchored = true
 	rightWing.CanCollide = false
 	rightWing.Color = color2 or Color3.fromRGB(200, 150, 255)
 	rightWing.Material = Enum.Material.Neon
-	rightWing.Transparency = 0.3
+	rightWing.Transparency = 0.1  -- Less transparent
 	rightWing.Parent = butterfly
 	
-	-- Body
+	-- Add decoration to right wing
+	local rightSpot = Instance.new("Part")
+	rightSpot.Size = Vector3.new(1, 0.3, 1.5)
+	rightSpot.Position = rightWing.Position
+	rightSpot.Anchored = true
+	rightSpot.CanCollide = false
+	rightSpot.Color = color1 or Color3.fromRGB(255, 150, 200)
+	rightSpot.Material = Enum.Material.Neon
+	rightSpot.Transparency = 0.2
+	rightSpot.Shape = Enum.PartType.Ball
+	rightSpot.Parent = butterfly
+	
+	-- Body (bigger)
 	local body = Instance.new("Part")
 	body.Name = "Body"
-	body.Size = Vector3.new(0.3, 0.3, 2)
+	body.Size = Vector3.new(0.5, 0.5, 2.5)
 	body.Position = position
 	body.Anchored = true
 	body.CanCollide = false
-	body.Color = Color3.fromRGB(100, 50, 100)
+	body.Color = Color3.fromRGB(80, 40, 80)
 	body.Material = Enum.Material.Neon
 	body.Shape = Enum.PartType.Cylinder
 	body.Orientation = Vector3.new(0, 0, 90)
@@ -71,6 +95,24 @@ local function createButterfly(position, size, color1, color2)
 	local sparkle = Instance.new("Sparkles")
 	sparkle.SparkleColor = color1 or Color3.fromRGB(255, 150, 200)
 	sparkle.Parent = body
+	
+	-- Add a glowing orb in the center
+	local glow = Instance.new("Part")
+	glow.Size = Vector3.new(0.8, 0.8, 0.8)
+	glow.Position = position
+	glow.Anchored = true
+	glow.CanCollide = false
+	glow.Color = color1
+	glow.Material = Enum.Material.Neon
+	glow.Shape = Enum.PartType.Ball
+	glow.Parent = butterfly
+	
+	-- Add point light to make it glow
+	local light = Instance.new("PointLight")
+	light.Brightness = 3
+	light.Range = 15
+	light.Color = color1
+	light.Parent = glow
 	
 	butterfly.Parent = Workspace
 	return butterfly
@@ -116,9 +158,10 @@ end
 -- Create decorative butterflies along the course
 print("Placing decorative butterflies...")
 
--- Butterflies at spawn
-createButterfly(Vector3.new(-15, 10, 0), Vector3.new(1.5, 0.1, 2), Color3.fromRGB(255, 150, 200), Color3.fromRGB(255, 200, 150))
-createButterfly(Vector3.new(15, 10, 0), Vector3.new(1.5, 0.1, 2), Color3.fromRGB(150, 200, 255), Color3.fromRGB(200, 150, 255))
+-- Large butterflies at spawn (very visible!)
+createButterfly(Vector3.new(-12, 10, 0), Vector3.new(4, 0.3, 5), Color3.fromRGB(255, 150, 200), Color3.fromRGB(255, 200, 150))
+createButterfly(Vector3.new(12, 10, 0), Vector3.new(4, 0.3, 5), Color3.fromRGB(150, 200, 255), Color3.fromRGB(200, 150, 255))
+createButterfly(Vector3.new(0, 12, -10), Vector3.new(3.5, 0.3, 4.5), Color3.fromRGB(255, 180, 220), Color3.fromRGB(220, 150, 255))
 
 -- Butterflies along the course
 local butterflyColors = {
@@ -129,25 +172,35 @@ local butterflyColors = {
 	{Color3.fromRGB(150, 200, 255), Color3.fromRGB(180, 220, 255)},  -- Blue
 }
 
-for i = 1, 15 do
-	local zPos = -i * 20
+for i = 1, 20 do
+	local zPos = -i * 15
 	local colorSet = butterflyColors[math.random(1, #butterflyColors)]
 	
-	-- Left side butterfly
+	-- Left side butterfly (bigger and closer)
 	createButterfly(
-		Vector3.new(-15 + math.random(-5, 5), 8 + math.random(0, 8), zPos),
-		Vector3.new(1.2, 0.1, 1.8),
+		Vector3.new(-12 + math.random(-3, 3), 6 + math.random(0, 10), zPos),
+		Vector3.new(2.5, 0.2, 3.5),
 		colorSet[1],
 		colorSet[2]
 	)
 	
-	-- Right side butterfly
+	-- Right side butterfly (bigger and closer)
 	createButterfly(
-		Vector3.new(15 + math.random(-5, 5), 8 + math.random(0, 8), zPos),
-		Vector3.new(1.2, 0.1, 1.8),
+		Vector3.new(12 + math.random(-3, 3), 6 + math.random(0, 10), zPos),
+		Vector3.new(2.5, 0.2, 3.5),
 		colorSet[2],
 		colorSet[1]
 	)
+	
+	-- Center butterfly occasionally
+	if i % 3 == 0 then
+		createButterfly(
+			Vector3.new(0, 10 + math.random(0, 5), zPos),
+			Vector3.new(3, 0.3, 4),
+			colorSet[1],
+			colorSet[2]
+		)
+	end
 end
 
 -- Create floating butterfly particle effects
