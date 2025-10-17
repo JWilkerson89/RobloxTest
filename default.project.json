@@ -26,7 +26,21 @@
       "$properties": {
         "FilteringEnabled": true
       },
-      "$path": "src/workspace"
+      "Checkpoints": {
+        "$className": "Folder",
+        "$path": "src/workspace/Checkpoints"
+      },
+      "KillBricks": {
+        "$className": "Folder",
+        "$path": "src/workspace/KillBricks"
+      },
+      "Platforms": {
+        "$className": "Folder",
+        "$path": "src/workspace/Platforms"
+      },
+      "WinPart": {
+        "$path": "src/workspace/WinPart.model.json"
+      }
     }
   }
 }

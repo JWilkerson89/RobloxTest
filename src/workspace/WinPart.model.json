@@ -1,0 +1,16 @@
+{
+  "className": "Part",
+  "properties": {
+    "Name": "WinPart",
+    "Size": [15, 1, 15],
+    "Position": [0, 5, 80],
+    "Anchored": true,
+    "CanCollide": false,
+    "Color": [1, 0.843137, 0],
+    "Material": "Neon",
+    "Transparency": 0.2,
+    "TopSurface": "Smooth",
+    "BottomSurface": "Smooth"
+  }
+}
+
